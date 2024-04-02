@@ -45,13 +45,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         intent.action?.run {
-            if (this == Intent.ACTION_VIEW)
+            if (this == Intent.ACTION_VIEW) {
                 intent.data?.let {
                     lifecycleScope.launch(Dispatchers.Main) {
                         // TODO Fix string extraction
                         fetchComic(it.path!!.substring(4))
                     }
                 }
+            }
         }
             findViewById<Button>(R.id.requestButton).setOnClickListener{
                 intent = Intent(
