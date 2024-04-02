@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                 intent.data?.let {
                     lifecycleScope.launch(Dispatchers.Main) {
                         // TODO Fix string extraction
-                        fetchComic(it.path!!.substring(4))
+                        fetchComic(it.path?.replace("/", "")!!)
                     }
                 }
             }
